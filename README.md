@@ -94,8 +94,7 @@ After scanning, the action will add the results as annotations in a pull request
 ## Scan Summary
 Every action will provide a clear scan summary output, and by clicking the 'View in code' link, you will be directed to the precise location of the secret.
 
-![](/assets/secrets_summary_preview.png.png)
->  **NOTE:**  Annotations can be disabled by setting the "show_annotation" input to "false"
+![](/assets/secrets_summary_preview.png)
 
 ## Upload SARIF report
 If you have [GitHub code scanning](https://docs.github.com/en/github/finding-security-vulnerabilities-and-errors-in-your-code/about-code-scanning) available you can use Orca Shift Left Security as a scanning tool
