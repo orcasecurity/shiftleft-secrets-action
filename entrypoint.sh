@@ -104,8 +104,8 @@ function set_secrets_scan_flags() {
   if [ "${INPUT_TO_COMMIT}" ]; then
     SCAN_FLAGS+=(--to-commit="${INPUT_TO_COMMIT}")
   fi
-  if [ "${INPUT_FULL_HISTORY_SCAN}" ]; then
-    SCAN_FLAGS+=(--ignore-git-history-baseline="${INPUT_FULL_HISTORY_SCAN}")
+  if [ "${INPUT_IGNORE_GIT_HISTORY_BASELINE}" ]; then
+    SCAN_FLAGS+=(--ignore-git-history-baseline="${INPUT_IGNORE_GIT_HISTORY_BASELINE}")
   fi
   if [ "${INPUT_DISABLE_GIT_SCAN}" ]; then
     SCAN_FLAGS+=(--disable-git-scan="${INPUT_DISABLE_GIT_SCAN}")

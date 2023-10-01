@@ -51,7 +51,7 @@ inputs:
   disable_git_scan:
     description: "Disable Git scan"
     required: false
-  full_history_scan:
+  ignore_git_history_baseline:
     description: "run full history scan"
     required: false
   from_commit:

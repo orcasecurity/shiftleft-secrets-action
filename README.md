@@ -61,8 +61,8 @@ jobs:
 | --------------------------- | -------------------- | --------------------------------------------------------------------------------- | ------- | -------- | ------- |
 | api_token                   |                      | Orca API Token used for Authentication                                            | String  | Yes      | N/A     |
 | project_key                 | my-project-key       | Project Key name                                                                  | String  | Yes      | N/A     |
-| path                        | sub-dir              | Path to scan                                                                      | String  | Yes      | N/A     |
-| format                      | json                 | Format for displaying the results                                                 | String  | No       | cli     |
+| path                        | sub-dir              | Path to scan                                                                      | String  | Yes      | .       |
+| format                      | json                 | Format for displaying the results                                                 | String  | No       | table   |
 | output                      | results/             | Output directory for scan results                                                 | String  | No       | N/A     |
 | no_color                    | false                | Disable color output                                                              | Boolean | No       | false   |
 | exit_code                   | 10                   | Exit code for failed execution due to policy violations                           | Integer | No       | 3       |
@@ -76,7 +76,7 @@ jobs:
 | show_failed_issues_only     | n/a                  | show only failed issues                                                           | Boolean | No       | false   |
 | from-commit                 | n/a                  | the commit to search *from*                                                       | String  | No       | N/A     |
 | to-commit                   | n/a                  | the commit to search *to*                                                         | String  | No       | N/A     |
-| disable-git-history-scan    | true                 | flag that indicates that the CLI will not scan git history for secrets            | Boolean | No       | false   |
+| disable-git-scan            | true                 | flag that indicates that the CLI will not scan git history for secrets            | Boolean | No       | false   |
 | ignore-git-history-baseline | true                 | forces a full history scan                                                        | Boolean | No       | false   |
 
 
