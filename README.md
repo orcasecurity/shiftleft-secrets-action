@@ -51,7 +51,7 @@ jobs:
 
 
 > [!NOTE]
-> Utilizing **fetch-depth=0** is essential for a valid scan of the git history.
+> Utilizing **fetch-depth=0** is essential for a valid git history scan.
 
 
 
