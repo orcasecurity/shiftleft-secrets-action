@@ -15,7 +15,9 @@ for [Orca Shift Left Security](https://orca.security/solutions/shift-left-securi
   - [Usage](#usage)
     - [Workflow](#workflow)
     - [Inputs](#inputs)
+  - [Checks](#checks)
   - [Annotations](#annotations)
+  - [Scan Summary](#scan-summary)
   - [Upload SARIF report](#upload-sarif-report)
 
 
@@ -45,10 +47,13 @@ jobs:
         with:
           api_token: ${{ secrets.ORCA_SECURITY_API_TOKEN }}
           project_key: ${{ env.PROJECT_KEY }}
-          path:
-            # scanning the entire repository
-            "."
 ```
+
+
+> [!NOTE]
+> Utilizing **fetch-depth=0** is essential for a valid scan of the git history.
+
+
 
 ### Inputs
 
@@ -118,7 +123,7 @@ jobs:
           fetch-depth: 0
       - name: Scan Secrets
         id: orcasecurity_secrets_scan
-        uses: ./
+        uses: orcasecurity/shiftleft-secrets-action@v1
         with:
           api_token:
             ${{ secrets.ORCA_SECURITY_API_TOKEN }}
