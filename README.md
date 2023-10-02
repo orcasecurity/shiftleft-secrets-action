@@ -7,10 +7,7 @@ for [Orca Shift Left Security](https://orca.security/solutions/shift-left-securi
 
 
 
-## Table of Contents
-
-- [Orca Shift Left Security Action](#orca-shift-left-security-action)
-      - [More info can be found in the official Orca Shift Left Security documentation](#more-info-can-be-found-in-the-official-orca-shift-left-security-documentation)
+### Table of Contents
   - [Table of Contents](#table-of-contents)
   - [Usage](#usage)
     - [Workflow](#workflow)
