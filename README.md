@@ -1,4 +1,6 @@
-# Orca Security - Secrets Detection with Shift Left Security quick start guide
+Test.
+
+# Orca Security - Secrets Detection witha Shift Left Security quick start guide
 Any secrets should be detected in early phases of SDLC! The sample repo gives you how you can demo Orca Security's secrets detection capability in 2 minutes!
 <br>
 <br>
