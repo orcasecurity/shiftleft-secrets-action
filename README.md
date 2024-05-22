@@ -54,28 +54,29 @@ jobs:
 
 ### Inputs
 
-| Variable                    | Example Value &nbsp; | Description &nbsp;                                                                | Type    | Required | Default |
-| --------------------------- | -------------------- | --------------------------------------------------------------------------------- | ------- | -------- | ------- |
-| api_token                   |                      | Orca API Token used for Authentication                                            | String  | Yes      | N/A     |
-| project_key                 | my-project-key       | Project Key name                                                                  | String  | Yes      | N/A     |
-| path                        | sub-dir              | Path to scan                                                                      | String  | No       | .       |
-| format                      | json                 | Format for displaying the results                                                 | String  | No       | table   |
-| output                      | results/             | Output directory for scan results                                                 | String  | No       | N/A     |
-| no_color                    | false                | Disable color output                                                              | Boolean | No       | false   |
-| exit_code                   | 10                   | Exit code for failed execution due to policy violations                           | Integer | No       | 3       |
-| control_timeout             | 30                   | Number of seconds the control has to execute before being canceled                | Integer | No       | 60      |
-| silent                      | false                | Disable logs and warnings output                                                  | Boolean | No       | false   |
-| console_output              | json                 | Prints results to console in the provided format (only when --output is provided) | String  | No       | cli     |
-| config                      | config.json          | path to configuration file (json, yaml or toml)                                   | String  | No       | N/A     |
-| show_annotations            | true                 | show GitHub annotations on pull requests                                          | Boolean | No       | true    |
-| exceptions_filepath         | n/a                  | exceptions YAML filepath. (File should be mounted)                                | String  | No       | false   |
-| num_cpu                     | 10                   | Number of logical CPUs to be used for secret scanning (default 10)                | Integer | No       | 10      |
-| show_failed_issues_only     | n/a                  | show only failed issues                                                           | Boolean | No       | false   |
-| from-commit                 | n/a                  | the commit to search *from*                                                       | String  | No       | N/A     |
-| to-commit                   | n/a                  | the commit to search *to*                                                         | String  | No       | N/A     |
-| disable-git-scan            | true                 | flag that indicates that the CLI will not scan git history for secrets            | Boolean | No       | false   |
-| ignore-git-history-baseline | true                 | forces a full history scan                                                        | Boolean | No       | false   |
-
+| Variable                    | Example Value &nbsp; | Description &nbsp;                                                                | Type    | Required | Default     |
+|-----------------------------|----------------------|-----------------------------------------------------------------------------------|---------|----------|-------------|
+| api_token                   |                      | Orca API Token used for Authentication                                            | String  | Yes      | N/A         |
+| project_key                 | my-project-key       | Project Key name                                                                  | String  | Yes      | N/A         |
+| path                        | sub-dir              | Path to scan                                                                      | String  | No       | .           |
+| format                      | json                 | Format for displaying the results                                                 | String  | No       | table       |
+| output                      | results/             | Output directory for scan results                                                 | String  | No       | N/A         |
+| no_color                    | false                | Disable color output                                                              | Boolean | No       | false       |
+| exit_code                   | 10                   | Exit code for failed execution due to policy violations                           | Integer | No       | 3           |
+| control_timeout             | 30                   | Number of seconds the control has to execute before being canceled                | Integer | No       | 60          |
+| silent                      | false                | Disable logs and warnings output                                                  | Boolean | No       | false       |
+| console_output              | json                 | Prints results to console in the provided format (only when --output is provided) | String  | No       | cli         |
+| config                      | config.json          | path to configuration file (json, yaml or toml)                                   | String  | No       | N/A         |
+| show_annotations            | true                 | show GitHub annotations on pull requests                                          | Boolean | No       | true        |
+| exceptions_filepath         | n/a                  | exceptions YAML filepath. (File should be mounted)                                | String  | No       | false       |
+| num_cpu                     | 10                   | Number of logical CPUs to be used for secret scanning (default 10)                | Integer | No       | 10          |
+| show_failed_issues_only     | n/a                  | show only failed issues                                                           | Boolean | No       | false       |
+| from-commit                 | n/a                  | the commit to search *from*                                                       | String  | No       | N/A         |
+| to-commit                   | n/a                  | the commit to search *to*                                                         | String  | No       | N/A         |
+| disable-git-scan            | true                 | flag that indicates that the CLI will not scan git history for secrets            | Boolean | No       | false       |
+| ignore-git-history-baseline | true                 | forces a full history scan                                                        | Boolean | No       | false       |
+| debug                       | true                 | Debug mode                                                                        | Boolean | No       | false       |
+| log_path                    | results/             | The directory path to specify where the logs should be written to on debug mode.  | String  | No       | working dir |
 
 ## Checks
 Upon adding the action, two new checks will become visible on pull requests:
