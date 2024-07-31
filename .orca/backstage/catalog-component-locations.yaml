@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: catalog-locations-shiftleft-secrets-action
+  labels:
+    repository: shiftleft-secrets-action
+  annotations:
+    github.com/project-slug: orcasecurity/shiftleft-secrets-action
+spec:
+  presence: optional
+  targets: []
