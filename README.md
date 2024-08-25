@@ -77,6 +77,7 @@ jobs:
 | ignore-git-history-baseline | true                 | forces a full history scan                                                        | Boolean | No       | false       |
 | debug                       | true                 | Debug mode                                                                        | Boolean | No       | false       |
 | log_path                    | results/             | The directory path to specify where the logs should be written to on debug mode.  | String  | No       | working dir |
+| disable-active-verification | true                 | Disable active verification of secrets                                            | Boolean | No       | false       |
 
 ## Checks
 Upon adding the action, two new checks will become visible on pull requests:
