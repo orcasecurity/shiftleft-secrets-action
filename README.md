@@ -5,25 +5,23 @@ for [Orca Shift Left Security](https://orca.security/solutions/shift-left-securi
 
 #### More info can be found in the official Orca Shift Left Security<a href="https://docs.orcasecurity.io/v1/docs/shift-left-security"> documentation</a>
 
-
-
 ### Table of Contents
-  - [Table of Contents](#table-of-contents)
-  - [Usage](#usage)
-    - [Workflow](#workflow)
-    - [Inputs](#inputs)
-  - [Checks](#checks)
-  - [Annotations](#annotations)
-  - [Scan Summary](#scan-summary)
-  - [Upload SARIF report](#upload-sarif-report)
 
+- [Usage](#usage)
+  - [Workflow](#workflow)
+  - [Inputs](#inputs)
+- [Checks](#checks)
+- [Annotations](#annotations)
+- [Scan Summary](#scan-summary)
+- [Upload SARIF report](#upload-sarif-report)
 
 ## Usage
 
 ### Workflow
 
 ```yaml
-name: Sample Orca Secrets Scan Workflow
+name:
+  Sample Orca Secrets Scan Workflow
   # Trigger the workflow on push and pull requests
 on: [push, pull_request]
 jobs:
@@ -37,7 +35,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0       
+          fetch-depth: 0
 
       - name: Run Orca Secrets Scan
         uses: orcasecurity/shiftleft-secrets-action@v1
@@ -46,16 +44,13 @@ jobs:
           project_key: ${{ env.PROJECT_KEY }}
 ```
 
-
 > [!NOTE]
 > Utilizing **fetch-depth=0** is essential for a valid git history scan.
-
-
 
 ### Inputs
 
 | Variable                    | Example Value &nbsp; | Description &nbsp;                                                                | Type    | Required | Default     |
-|-----------------------------|----------------------|-----------------------------------------------------------------------------------|---------|----------|-------------|
+| --------------------------- | -------------------- | --------------------------------------------------------------------------------- | ------- | -------- | ----------- |
 | api_token                   |                      | Orca API Token used for Authentication                                            | String  | Yes      | N/A         |
 | project_key                 | my-project-key       | Project Key name                                                                  | String  | Yes      | N/A         |
 | path                        | sub-dir              | Path to scan                                                                      | String  | No       | .           |
@@ -71,8 +66,8 @@ jobs:
 | exceptions_filepath         | n/a                  | exceptions YAML filepath. (File should be mounted)                                | String  | No       | false       |
 | num_cpu                     | 10                   | Number of logical CPUs to be used for secret scanning (default 10)                | Integer | No       | 10          |
 | show_failed_issues_only     | n/a                  | show only failed issues                                                           | Boolean | No       | false       |
-| from-commit                 | n/a                  | the commit to search *from*                                                       | String  | No       | N/A         |
-| to-commit                   | n/a                  | the commit to search *to*                                                         | String  | No       | N/A         |
+| from-commit                 | n/a                  | the commit to search _from_                                                       | String  | No       | N/A         |
+| to-commit                   | n/a                  | the commit to search _to_                                                         | String  | No       | N/A         |
 | disable-git-scan            | true                 | flag that indicates that the CLI will not scan git history for secrets            | Boolean | No       | false       |
 | ignore-git-history-baseline | true                 | forces a full history scan                                                        | Boolean | No       | false       |
 | debug                       | true                 | Debug mode                                                                        | Boolean | No       | false       |
@@ -80,29 +75,33 @@ jobs:
 | disable-active-verification | true                 | Disable active verification of secrets                                            | Boolean | No       | false       |
 
 ## Checks
+
 Upon adding the action, two new checks will become visible on pull requests:
 
 ![](/assets/checks_preview.png)
 
-* For the push event, the scanning process will target and analyze only the most recent push.
-* Conversely, for the pull_request event, the scanning will encompass every commit that forms part of the pull request, diligently searching for any potential secrets.
-
+- For the push event, the scanning process will target and analyze only the most recent push.
+- Conversely, for the pull_request event, the scanning will encompass every commit that forms part of the pull request, diligently searching for any potential secrets.
 
 ## Annotations
+
 After scanning, the action will add the results as annotations in a pull request:
 
 ![](/assets/secret_annotation_preview.png)
->  **NOTE:**  Annotations can be disabled by setting the "show_annotation" input to "false"
 
+> **NOTE:** Annotations can be disabled by setting the "show_annotation" input to "false"
 
 ## Scan Summary
+
 Every action will provide a clear scan summary output, and by clicking the 'View in code' link, you will be directed to the precise location of the secret.
 
 ![](/assets/secrets_summary_preview.png)
 
 ## Upload SARIF report
+
 If you have [GitHub code scanning](https://docs.github.com/en/github/finding-security-vulnerabilities-and-errors-in-your-code/about-code-scanning) available you can use Orca Shift Left Security as a scanning tool
-> **NOTE:**  Code scanning is available for all public repositories. Code scanning is also available in private repositories owned by organizations that use GitHub Enterprise Cloud and have a license for GitHub Advanced Security.
+
+> **NOTE:** Code scanning is available for all public repositories. Code scanning is also available in private repositories owned by organizations that use GitHub Enterprise Cloud and have a license for GitHub Advanced Security.
 
 Configuration:
 
@@ -124,14 +123,10 @@ jobs:
         id: orcasecurity_secrets_scan
         uses: orcasecurity/shiftleft-secrets-action@v1
         with:
-          api_token:
-            ${{ secrets.ORCA_SECURITY_API_TOKEN }}
-          project_key:
-            "default"
-          format:
-            "sarif"
-          output:
-            "results/"
+          api_token: ${{ secrets.ORCA_SECURITY_API_TOKEN }}
+          project_key: "default"
+          format: "sarif"
+          output: "results/"
           console_output: "table"
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v3
@@ -143,7 +138,5 @@ jobs:
 The results list can be found on the security tab of your GitHub project and should look like the following image
 ![](/assets/code_scanning_list.png)
 
-
-An entry should describe the error and in which line it occurred 
+An entry should describe the error and in which line it occurred
 ![](/assets/code_scanning_entry.png)
-

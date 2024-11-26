@@ -16,7 +16,6 @@ function setWorkflowStatus(statusCode) {
   core.setFailed(`Orca scan failed with exit code ${statusCode}`);
 }
 
-
 function main() {
   console.log("Processing Orca Shift-Left scan results...");
   const jsonOutput = filepath.join(process.env.OUTPUT_FOR_JSON, "secrets.json");
@@ -29,7 +28,6 @@ function main() {
     console.error(e);
     setWorkflowStatus(process.env.ORCA_EXIT_CODE);
   }
-
 }
 
 main();
