@@ -31,6 +31,9 @@ inputs:
     description: "Suppress error reporting to the monitoring platform"
     required: false
     default: "false"
+  max_secret:
+    description: "Maximum secrets that can be found, when reaching this number secret scan will stop"
+    required: false
   num_cpu:
     description: "Number of logical CPUs to be used for secret scanning (default 10)"
     required: false
@@ -41,6 +44,7 @@ inputs:
   disable_git_scan:
     description: "Disable Git scan"
     required: false
+    default: "false"
   ignore_git_history_baseline:
     description: "Run full history scan"
     required: false

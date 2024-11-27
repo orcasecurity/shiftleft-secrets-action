@@ -34,17 +34,8 @@ function set_global_flags() {
   if [ "${INPUT_CONFIG}" ]; then
     GLOBAL_FLAGS+=(--config "${INPUT_CONFIG}")
   fi
-  if [ "${INPUT_BASELINE_CONTEXT_KEY}" ]; then
-    GLOBAL_FLAGS+=(--baseline-context-key "${INPUT_BASELINE_CONTEXT_KEY}")
-  fi
-  if [ "${INPUT_DISABLE_BASELINE}" == "true" ]; then
-    GLOBAL_FLAGS+=(--disable-baseline)
-  fi
   if [ "${INPUT_DISABLE_ERR_REPORT}" == "true" ]; then
     GLOBAL_FLAGS+=(--disable-err-report)
-  fi
-  if [ "${INPUT_SYNC_BASELINE}" ]; then
-    GLOBAL_FLAGS+=(--sync-baseline "${INPUT_SYNC_BASELINE}")
   fi
   if [ "${INPUT_DEBUG}" == "true" ]; then
     GLOBAL_FLAGS+=(--debug)
@@ -92,6 +83,9 @@ function set_secrets_scan_flags() {
   if [ "${INPUT_EXCEPTIONS_FILEPATH}" ]; then
     SCAN_FLAGS+=(--exceptions-filepath "${INPUT_EXCEPTIONS_FILEPATH}")
   fi
+  if [ "${INPUT_TIMEOUT}" ]; then
+    SCAN_FLAGS+=(--timeout "${INPUT_TIMEOUT}")
+  fi
   if [ "${INPUT_SHOW_FAILED_ISSUES_ONLY}" = "true" ]; then
     SCAN_FLAGS+=(--show-failed-issues-only)
   fi
@@ -108,21 +102,20 @@ function set_secrets_scan_flags() {
     SCAN_FLAGS+=(--console-output="${CONSOLE_OUTPUT_FOR_JSON}")
   fi
   if [ "${INPUT_FROM_COMMIT}" ]; then
-    SCAN_FLAGS+=(--from-commit="${INPUT_FROM_COMMIT}")
+    SCAN_FLAGS+=(--from-commit "${INPUT_FROM_COMMIT}")
   fi
   if [ "${INPUT_TO_COMMIT}" ]; then
-    SCAN_FLAGS+=(--to-commit="${INPUT_TO_COMMIT}")
+    SCAN_FLAGS+=(--to-commit "${INPUT_TO_COMMIT}")
   fi
-  if [ "${INPUT_IGNORE_GIT_HISTORY_BASELINE}" ]; then
-    SCAN_FLAGS+=(--ignore-git-history-baseline="${INPUT_IGNORE_GIT_HISTORY_BASELINE}")
+  if [ "${INPUT_IGNORE_GIT_HISTORY_BASELINE}" = "true" ]; then
+    SCAN_FLAGS+=(--ignore-git-history-baseline)
   fi
-  if [ "${INPUT_DISABLE_GIT_SCAN}" ]; then
-    SCAN_FLAGS+=(--disable-git-scan="${INPUT_DISABLE_GIT_SCAN}")
+  if [ "${INPUT_DISABLE_GIT_SCAN}" = "true" ]; then
+    SCAN_FLAGS+=(--disable-git-scan)
   fi
-  if [ "${MAX_SECRETS}" ]; then
-    SCAN_FLAGS+=(--max-secret="${MAX_SECRETS}")
+  if [ "${INPUT_MAX_SECRET}" ]; then
+    SCAN_FLAGS+=(--max-secret "${INPUT_MAX_SECRET}")
   fi
-  SCAN_FLAGS+=(--debug)
 }
 
 function set_env_vars() {

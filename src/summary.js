@@ -27,7 +27,7 @@ function generateGithubFindingLink(
   commitSha,
   fileName,
   startLine,
-  endLine
+  endLine,
 ) {
   if (!commitSha) {
     return "";
@@ -49,7 +49,7 @@ function extractSecretFinding(secretResults, secrets) {
         finding["commit"]["hash"],
         finding["file_name"],
         finding.position["start_line"],
-        finding.position["end_line"]
+        finding.position["end_line"],
       ),
     });
   }
@@ -66,7 +66,7 @@ function extractSecrets(results) {
 
 function generateResultSummary(results) {
   const summaryResults = generateSecretsDescriptionText(
-    extractSecrets(results)
+    extractSecrets(results),
   );
   const filePath = process.env.GITHUB_STEP_SUMMARY;
   summary.summary.addRaw(summaryResults);
